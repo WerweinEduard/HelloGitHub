@@ -21,7 +21,7 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore HelloBlazor/HelloBlazor/HelloBlazor.csproj
-    - name: Build
-      run: dotnet build --no-restore
+    - name: Publish
+      run: dotnet publish HelloBlazor/HelloBlazor/HelloBlazor.csproj -c Release
     - name: Test
       run: dotnet test --no-build --verbosity normal
