@@ -24,9 +24,13 @@ jobs:
     - name: Build
       run: dotnet build HelloBlazor/HelloBlazor/HelloBlazor.csproj --no-restore
 
-
+    - name: test
+      run: dotnet test HelloBlazor/HelloBlazor/HelloBlazor.csproj --no-build --verbosity normal
       
     - name: Publish
       run: dotnet publish HelloBlazor/HelloBlazor/HelloBlazor.csproj -c Release
+      
+    - name: Change base-tag in index.html from / to HelloBlazor
+      run: sed -i 's/<base href="\/" \/>/<base href="\/HelloBlazor\/HelloBlazor\/" \/>/g' release/wwwroot/index.html
       
       
