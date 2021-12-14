@@ -3,5 +3,5 @@
 ################################################################################
 
 **/.vs
-/HelloBlazor/HelloBlazor/bin/Debug/net6.0
-/HelloBlazor/HelloBlazor/obj
+/HelloBlazor/bin
+/HelloBlazor/obj
