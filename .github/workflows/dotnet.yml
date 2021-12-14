@@ -30,8 +30,4 @@ jobs:
     - name: Publish
       run: dotnet publish HelloBlazor/HelloBlazor/HelloBlazor.csproj -c Release
       
-    - name: Change base-tag in index.html from / to HelloBlazor
-      run: sed -i 's/<base href="\/" \/>/<base href="\/HelloBlazor\/HelloBlazor\/" \/>/g'  bin/Release/net6.0/publish/wwwroot/index.html
-      
-    - name: copy index.html to 404.html
-      run: cp bin/release/wwwroot/index.html bin/release/wwwroot/404.html
+
