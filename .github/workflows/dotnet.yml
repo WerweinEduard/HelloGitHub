@@ -24,8 +24,7 @@ jobs:
     - name: Build
       run: dotnet build HelloBlazor/HelloBlazor/HelloBlazor.csproj --no-restore
 
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+
       
     - name: Publish
       run: dotnet publish HelloBlazor/HelloBlazor/HelloBlazor.csproj -c Release
