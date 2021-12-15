@@ -30,12 +30,11 @@ jobs:
       run: dotnet test HelloAngular/HelloAngular.csproj --no-build --verbosity normal
       
     - name: Publish
-      run: dotnet publish HelloAngular/HelloAngular.csproj p:GHPages=true -o:public/angular -c Release
+      run: dotnet publish HelloAngular/HelloAngular.csproj p-GHPages=true -o public/angular -c Release
            
     - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses:  azure/webapps-deploy@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: public/angular/wwwroot
-          force_orphan: true
+          app-name: angular 
+          package: './public/angular' 
 
