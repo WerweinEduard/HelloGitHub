@@ -31,11 +31,6 @@ jobs:
       
     - name: Publish
       run: dotnet publish HelloBlazor/HelloBlazor.csproj p:GHPages=true -o:public/blazor -c Release
-           
-    - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          publish_dir: public/blazor/wwwroot
-          force_orphan: true
+
 
 
