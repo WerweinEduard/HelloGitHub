@@ -1,4 +1,4 @@
-name: Build and Publish Blazor WebAssembly in .NET 6
+name: Build and Publish .NET API with Angular
 
 on:
   push:
@@ -30,12 +30,11 @@ jobs:
       run: dotnet test HelloAngular/HelloAngular.csproj --no-build --verbosity normal
       
     - name: Publish
-      run: dotnet publish HelloAngular/HelloAngular.csproj -c Release
+      run: dotnet publish HelloAngular/HelloAngular.csproj p:GHPages=true -o:public/angular -c Release
            
-   # - name: Change base-tag in index.html from / to HelloBlazor
-   #   run: sed -i 's/<base href="\/" \/>/<base href="\/HelloBlazor\/HelloBlazor\/" \/>/g'  bin/Release/net6.0/publish/wwwroot/index.html
-      
-   # - name: copy index.html to 404.html
-   #   run: cp bin/release/wwwroot/index.html bin/release/wwwroot/404.html
-
+    - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: public/angular/wwwroot
+          force_orphan: true
 
