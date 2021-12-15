@@ -30,6 +30,6 @@ jobs:
       run: dotnet test HelloAngular/HelloAngular.csproj --no-build --verbosity normal
       
     - name: Publish
-      run: dotnet publish HelloAngular/HelloAngular.csproj p-GHPages=true -o public/angular -c Release
+      run: dotnet publish HelloAngular/HelloAngular.csproj -o public/angular -c Release
 
 
