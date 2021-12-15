@@ -1,0 +1,41 @@
+name: Build and Publish Blazor WebAssembly in .NET 6
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+          submodules: true
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore HelloAngular/HelloAngular.csproj
+
+    - name: Build
+      run: dotnet build HelloAngular/HelloAngular.csproj --no-restore
+
+    - name: test
+      run: dotnet test HelloAngular/HelloAngular.csproj --no-build --verbosity normal
+      
+    - name: Publish
+      run: dotnet publish HelloAngular/HelloAngular.csproj -c Release
+           
+   # - name: Change base-tag in index.html from / to HelloBlazor
+   #   run: sed -i 's/<base href="\/" \/>/<base href="\/HelloBlazor\/HelloBlazor\/" \/>/g'  bin/Release/net6.0/publish/wwwroot/index.html
+      
+   # - name: copy index.html to 404.html
+   #   run: cp bin/release/wwwroot/index.html bin/release/wwwroot/404.html
+
+
